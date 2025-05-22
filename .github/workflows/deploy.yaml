@@ -7,7 +7,6 @@ on:
 jobs:
 
   deploy:
-    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -19,4 +18,3 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             docker run -d \ --name postgresql-dev \ -e POSTGRES_USER=${{ secrets.POSTGRES_USER }} \ -e POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} \ -e POSTGRES_DB=${{ secrets.POSTGRES_DB }} \ -p 5432:5432 \ postgres:15
-            
